@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator Web Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calc">
+        <input id="display" type="text" readonly>
+
+        <div class="buttons">
+            <button onclick="input('add')">+</button>
+            <button onclick="input('subtract')">-</button>
+            <button onclick="input('multiply')">*</button>
+            <button onclick="input('divide')">/</button>
+            <button onclick="clearDisplay()">C</button>
+
+            <input id="num1" type="number" placeholder="Number 1">
+            <input id="num2" type="number" placeholder="Number 2">
+
+            <button onclick="calculate()">=</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="./apps/calculator-app/calculator.js"></script>
+    <script>
+        const calc = window.calc;
+        let currentOp = null;
+
+        function input(op) {
+            currentOp = op;
+            document.getElementById('display').value = op;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+            document.getElementById('num1').value = '';
+            document.getElementById('num2').value = '';
+            document.getElementById('result').textContent = '';
+            currentOp = null;
+        }
+
+        function calculate() {
+            const a = parseFloat(document.getElementById('num1').value);
+            const b = parseFloat(document.getElementById('num2').value);
+
+            if (!currentOp) {
+                document.getElementById('result').textContent = 'Select operation first';
+                return;
+            }
+
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById('result').textContent = 'Enter valid numbers';
+                return;
+            }
+
+            try {
+                const result = calc[currentOp](a, b);
+                document.getElementById('result').textContent = `Result: ${result}`;
+            } catch (e) {
+                document.getElementById('result').textContent = e.message;
+            }
+        }
+    </script>
+</body>
+</html>
