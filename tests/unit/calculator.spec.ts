@@ -9,11 +9,6 @@ test('divide by zero', () => {
     expect(() => calc.divide(5,0)).toThrow()
 })
 
-test('basic url test', async ({ page }) => {
-    await page.goto("https://www.tarunsingh.co.in");
-    await expect(page).toHaveTitle(/Tarun/i);
-})
-
 test('multiple number', () => {
     expect (calc.multiply(2,5)).toBe(10)
 })
