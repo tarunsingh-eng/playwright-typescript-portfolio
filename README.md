@@ -5,3 +5,5 @@ What is included
 2. integration tests
 2. regression tests
 3. api 
+
+Report avaialble at: https://tarunsingh-eng.github.io/playwright-typescript-portfolio/
