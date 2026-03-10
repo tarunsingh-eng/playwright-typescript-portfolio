@@ -12,3 +12,13 @@ test('adds two numbers', async ({ page }) => {
 
   await expect(page.locator('#result')).toHaveText('Result: 5');
 });
+
+test('substract two numbers', async ({page}) => {
+  await page.fill('#num1', '5');
+  await page.fill('#num2', '2');
+  await page.click('button[onclick="input(\'subtract\')"]');
+  await page.click('button[onclick="calculate()"]');
+
+  await expect.soft(page.locator('#result')).toHaveText('Result: 3');
+});
+
