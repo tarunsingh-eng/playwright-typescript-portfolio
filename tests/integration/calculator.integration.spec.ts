@@ -22,3 +22,21 @@ test('substract two numbers', async ({page}) => {
   await expect.soft(page.locator('#result')).toHaveText('Result: 3');
 });
 
+test('multiply two numbers', async ({page}) => {
+  await page.fill("#num1", '5');
+  await page.fill("#num2",'4');
+  await page.click('button[onclick="input(\'multiply\')"]');
+  await page.click('button[onclick="calculate()"]');
+
+  await expect.soft(page.locator('#result')).toHaveText('Result: 20');
+});
+
+
+test('devide two numbers', async ({page}) => {
+  await page.fill('input[placeholder="Number 1"]','50');
+  await page.fill('input[placeholder="Number 2"]', '2');
+  await page.click('button[onclick="input(\'divide\')"]');
+  await page.click('button[onclick="calculate()"]');
+
+  await expect.soft(page.locator('div[id="result"]')).toHaveText('Result: 25');
+})
