@@ -60,7 +60,7 @@ test('Multiple multiply operations + use of clear display button', async ({ page
   await expect.soft(page.locator('#result')).toHaveText('Result: 2000');
 })
 
-test('multiple operations: add, substract, multiply and divide', async({page})=> {
+test('multiple operations: add, substract, multiply, divide and clear display', async({page})=> {
     await page.fill('#num1', '20');
     await page.fill('#num2', '2');
     await page.click('button[onclick="input(\'add\')"]');
