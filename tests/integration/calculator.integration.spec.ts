@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { assert } from 'node:console';
+
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/index.html');
+  await page.waitForSelector('#num1');
 });
 
 test('adds two numbers', async ({ page }) => {
@@ -94,4 +95,23 @@ test('multiple operations: add, substract, multiply, divide and clear display', 
 
     await expect(page.locator('#display')).toHaveText('');
     console.log("Display Cleared");
+})
+
+
+test('multiply by result', async ({page}) => {
+
+    await page.fill('#num1','10');
+    await page.fill('#num2','300');
+    await page.click('button[onclick="input(\'multiply\')"]');
+    await page.click('button[onclick="calculate()"]');
+
+    await expect(page.locator('#result')).toHaveText('Result: 3000');
+
+    let str1:string = await page.locator('#result').textContent();
+
+    await page.fill('#num2', str1.slice(9));
+    await page.click('button[onclick="calculate()"]');
+
+    await expect(page.locator('#result')).toHaveText('Result: 30000');
+
 })
