@@ -109,7 +109,7 @@ test('multiply by result', async ({page}) => {
 
     let str1:string = await page.locator('#result').textContent();
 
-    await page.fill('#num2', str1.slice(9));
+    await page.fill('#num2', str1.slice(8));
     await page.click('button[onclick="calculate()"]');
 
     await expect(page.locator('#result')).toHaveText('Result: 30000');
