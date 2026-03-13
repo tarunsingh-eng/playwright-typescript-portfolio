@@ -115,3 +115,14 @@ test('multiply by result', async ({page}) => {
     await expect(page.locator('#result')).toHaveText('Result: 30000');
 
 })
+
+
+test("add test", async({page})=> {
+  await page.fill('#num1','20');
+  await page.fill('#num2','10');
+  await page.click('button[onclick="input(\'add\')"]');
+  await page.click('button[onclick="calculate()"]');
+
+  await expect(page.locator('#result')).toHaveText('Result: 30');
+
+})
