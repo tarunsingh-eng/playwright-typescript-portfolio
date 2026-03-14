@@ -126,3 +126,15 @@ test("add test", async({page})=> {
   await expect(page.locator('#result')).toHaveText('Result: 30');
 
 })
+
+
+test("divide by zero", async ({page}) => {
+  await page.fill('#num1','20');
+  await page.fill('#num2','0');
+  await page.click('button[onclick="input(\'divide\')"]');
+  await page.click('button[onclick="calculate()"]');
+
+  await expect(page.locator('#result')).toHaveText('Division by zero');
+
+}
+)

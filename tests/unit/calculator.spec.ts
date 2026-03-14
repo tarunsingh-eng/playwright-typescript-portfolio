@@ -16,3 +16,4 @@ test('multiple number', () => {
 test('divide number', () => {
     expect(calc.divide(10,2)).toBe(5)
 })
+
