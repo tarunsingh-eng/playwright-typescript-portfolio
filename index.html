@@ -1,66 +1,53 @@
-<!DOCTYPE html>
+<!DOCTYPE = html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Calculator Web Interface</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align:center;
+            margin-top: 100px;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 15px;
+        }
+        #error{
+            color: rgb(153, 7, 7);
+        }
+    </style>
 </head>
 <body>
-    <div id="calc">
-        <input id="display" type="text" readonly>
+    <h2>Login</h2>
 
-        <div class="buttons">
-            <button onclick="input('add')">+</button>
-            <button onclick="input('subtract')">-</button>
-            <button onclick="input('multiply')">*</button>
-            <button onclick="input('divide')">/</button>
-            <button onclick="clearDisplay()">C</button>
+    <input id="username" type="text" placeholder="Username"><br>
+    <input id="password" type="password" placeholder="Password"><br>
+    <button id ="loginBtn" onclick="login()">Login</button>
+    <p id="error"></p>
 
-            <input id="num1" type="number" placeholder="Number 1">
-            <input id="num2" type="number" placeholder="Number 2">
-
-            <button onclick="calculate()">=</button>
-            <div id="result"></div>
-        </div>
-    </div>
-
-    <script src="./apps/calculator-app/calculator.js"></script>
     <script>
-        const calc = window.calc;
-        let currentOp = null;
-
-        function input(op) {
-            currentOp = op;
-            document.getElementById('display').value = op;
-        }
-
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-            document.getElementById('num1').value = '';
-            document.getElementById('num2').value = '';
-            document.getElementById('result').textContent = '';
-            currentOp = null;
-        }
-
-        function calculate() {
-            const a = parseFloat(document.getElementById('num1').value);
-            const b = parseFloat(document.getElementById('num2').value);
-
-            if (!currentOp) {
-                document.getElementById('result').textContent = 'Select operation first';
-                return;
+        //if already logged in navigate to calculator
+        window.onload = function() {
+            if(localStorage.getItem("user")) {
+                window.location.href = "calculator.html";
             }
+        }; 
 
-            if (isNaN(a) || isNaN(b)) {
-                document.getElementById('result').textContent = 'Enter valid numbers';
-                return;
-            }
+        function login(){
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
 
-            try {
-                const result = calc[currentOp](a, b);
-                document.getElementById('result').textContent = `Result: ${result}`;
-            } catch (e) {
-                document.getElementById('result').textContent = e.message;
+
+            // Demo credentials
+            if (user == "admin" && pass ==="1234") {
+                localStorage.setItem("user", user);
+                window.location.href = "calculator.html";
+            } else {
+                document.getElementById("error").innerText = "Invalid Credentials";
             }
         }
     </script>
