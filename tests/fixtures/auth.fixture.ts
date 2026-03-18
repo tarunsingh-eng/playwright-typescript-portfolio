@@ -17,6 +17,7 @@ export const test = base.extend<MyFixtures> ({
          page.click('#loginBtn'),
         ]);
         await use(page);
+        console.log("user logged in");
     },
 });
 
