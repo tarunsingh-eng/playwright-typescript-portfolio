@@ -23,3 +23,9 @@ test('calculator page requires authentication', async({request}) => {
     expect(body).toContain('localStorage.getItem("user")');
 });
 
+test('invalid route returns 404 or not found', async({request}) => {
+    const res = await request.get('/invalid.html');
+
+    expect([404, 500]).toContain(res.status());
+
+})
