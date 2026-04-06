@@ -107,9 +107,9 @@ test('multiply by result', async ({loggedInPage}) => {
 
     await expect(loggedInPage.locator('#result')).toHaveText('Result: 3000');
 
-    let str1:string = await loggedInPage.locator('#result').textContent();
+    let resultText: string = (await loggedInPage.locator('#result').textContent()) ?? '';
 
-    await loggedInPage.fill('#num2', str1.slice(8));
+    await loggedInPage.fill('#num2', resultText.slice(8));
     await loggedInPage.click('button[onclick="calculate()"]');
 
     await expect(loggedInPage.locator('#result')).toHaveText('Result: 30000');
