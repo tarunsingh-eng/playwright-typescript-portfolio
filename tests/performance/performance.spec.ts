@@ -16,4 +16,5 @@ test('First response in less than 500ms', async({request}) => {
 
     expect(res.ok()).toBeTruthy();
     expect(duration).toBeLessThan(500); 
+    console.log(duration);
 })
