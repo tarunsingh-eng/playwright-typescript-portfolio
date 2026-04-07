@@ -18,3 +18,16 @@ test('First response in less than 500ms', async({request}) => {
     expect(duration).toBeLessThan(500); 
     console.log(duration);
 })
+
+test('Another performance pass', async ({request}) => {
+
+    const   start = Date.now();
+    const   res = await request.get('/index.html');
+    const   duration = Date.now() - start;
+
+    expect(res.ok()).toBeTruthy();
+    expect(duration).toBeLessThan(100);
+    const  message = 'duration is '
+    console.log(message + duration);
+
+})
