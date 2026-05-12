@@ -5,7 +5,7 @@ test.beforeEach( async ({loggedInPage}) => {
 });
 
 
-test ('E2E>Login>substract>logout', async({loggedInPage}) => {
+test ('E2E > Login> substract > logout', async({loggedInPage}) => {
 
     await loggedInPage.fill('#num1', '5');
     await loggedInPage.fill('#num2', '2');
