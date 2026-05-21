@@ -17,3 +17,6 @@ test('divide number', () => {
     expect(calc.divide(10,2)).toBe(5)
 })
 
+test('subtract number', () => {
+    expect(calc.subtract(10,5)).toBe(5)
+})
