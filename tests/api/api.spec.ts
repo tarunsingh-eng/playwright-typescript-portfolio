@@ -28,3 +28,13 @@ test('Case Sensitive routes work', async({request}) => {
     expect([200, 404]).toContain(res.status());
     console.log(res.status());
 })
+
+
+test('index page responds under 500ms', async({request}) => {
+    const start = Date.now();
+    const res = await request.get('/index.html');
+    const end = Date.now();
+    const responseTime = end - start;
+    console.log(`Response Time: ${responseTime}ms`);
+        expect(responseTime).toBeLessThan(500);
+});
