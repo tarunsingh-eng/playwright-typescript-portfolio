@@ -22,7 +22,7 @@ test('invalid route returns 404 or NOT FOUND', async({request}) => {
     expect([404, 500]).toContain(res.status());
 })
 
-test('Case Sensitive routes work', async({request}) => {
+test('Case Sensitive route work', async({request}) => {
 
     const res = await request.get('/INDEX.HTML');
     expect([200, 404]).toContain(res.status());
