@@ -30,11 +30,11 @@ test('Case Sensitive route work', async({request}) => {
 })
 
 
-test('index page responds under 500ms', async({request}) => {
+test('index page responds under 400ms', async({request}) => {
     const start = Date.now();
     const res = await request.get('/index.html');
     const end = Date.now();
     const responseTime = end - start;
     console.log(`Response Time: ${responseTime}ms`);
-        expect(responseTime).toBeLessThan(500);
+        expect(responseTime).toBeLessThan(400);
 });
